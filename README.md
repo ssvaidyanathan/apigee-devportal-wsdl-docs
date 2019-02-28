@@ -2,8 +2,12 @@
 Sample to load WSDL docs to Apigee dev portal (Drupal)
 
 ## Pre-req:
+- Apigee Edge account
+- Apigee Dev portal (Drupal)
+	- Installed [wsdl_docs](https://cgit.drupalcode.org/wsdl_docs/tree/README.txt) module
 - Maven 3.x or later
 - Java 8 or later
+
 
 ## Steps:
 - Execute `mvn process-resources -Dportal.auth="{portal.auth}" -Dportal.url="{portal.url}" -Dwsdl_name="{wsdl_name}" -Dpath_to_wsdl_directory="{path_to_wsdl_directory}" -Dwsdl_file_name="{wsdl_file_name}"`

@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://webservices.flightexplorer.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://webservices.flightexplorer.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Flight Explorer FastTrack web services provide registered customers with flight information including real-time aircraft status, local airport weather conditions, and an image showing current flight location.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://webservices.flightexplorer.com/">
+      <s:element name="GetFlightData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFlightDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetFlightDataResult" type="tns:FlightData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FlightData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Response" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Origin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Destination" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Speed" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Altitude" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AircraftType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lat" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lon" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bearing" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EDT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ETA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PDT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PTA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AircraftName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AirlineName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFlightDataEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFlightDataExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetFlightDataExResult" type="tns:FlightDataEx" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FlightDataEx">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Response" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Origin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Destination" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Speed" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Altitude" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AircraftType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lat" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lon" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bearing" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EDT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ETA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PDT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PTA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AircraftName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AirlineName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginTime" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OriginTemp" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OriginWindSpeed" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginWindDir" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginWeatherDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationTime" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DestinationTemp" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DestinationWindSpeed" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationWindDir" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationWeatherDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFlightDataAndImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Alias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ScratchPad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ImageFlags" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ImageWidth" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ImageHeight" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFlightDataAndImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetFlightDataAndImageResult" type="tns:FlightDataAndImage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FlightDataAndImage">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Response" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImagePath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Origin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Destination" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Speed" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Altitude" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AircraftType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lat" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lon" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bearing" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EDT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ETA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PDT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PTA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AircraftName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AirlineName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFlightDataAndImageEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Alias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ScratchPad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ImageFlags" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ImageWidth" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ImageHeight" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFlightDataAndImageExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetFlightDataAndImageExResult" type="tns:FlightDataAndImageEx" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FlightDataAndImageEx">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Response" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImagePath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Origin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Destination" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Speed" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Altitude" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AircraftType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lat" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lon" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bearing" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EDT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ETA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PDT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PTA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AircraftName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AirlineName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginTime" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OriginTemp" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OriginWindSpeed" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginWindDir" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginWeatherDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationTime" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DestinationTemp" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DestinationWindSpeed" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationWindDir" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationWeatherDesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFlightImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Alias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ScratchPad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ImageFlags" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ImageWidth" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ImageHeight" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFlightImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetFlightImageResult" type="tns:FlightImage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FlightImage">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Response" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImagePath" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCodeShareFlightData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ACID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCodeShareFlightDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCodeShareFlightDataResult" type="tns:FlightData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FlightData" type="tns:FlightData" />
+      <s:element name="FlightDataEx" type="tns:FlightDataEx" />
+      <s:element name="FlightDataAndImage" type="tns:FlightDataAndImage" />
+      <s:element name="FlightDataAndImageEx" type="tns:FlightDataAndImageEx" />
+      <s:element name="FlightImage" type="tns:FlightImage" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetFlightDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFlightData" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFlightDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataExSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFlightDataEx" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataExSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFlightDataExResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataAndImageSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFlightDataAndImage" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataAndImageSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFlightDataAndImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataAndImageExSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFlightDataAndImageEx" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataAndImageExSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFlightDataAndImageExResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightImageSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFlightImage" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightImageSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFlightImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCodeShareFlightDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCodeShareFlightData" />
+  </wsdl:message>
+  <wsdl:message name="GetCodeShareFlightDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCodeShareFlightDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataHttpGetIn">
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="ACID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:FlightData" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataExHttpGetIn">
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="ACID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataExHttpGetOut">
+    <wsdl:part name="Body" element="tns:FlightDataEx" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataAndImageHttpGetIn">
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="ACID" type="s:string" />
+    <wsdl:part name="Alias" type="s:string" />
+    <wsdl:part name="ScratchPad" type="s:string" />
+    <wsdl:part name="ImageFlags" type="s:string" />
+    <wsdl:part name="ImageWidth" type="s:string" />
+    <wsdl:part name="ImageHeight" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataAndImageHttpGetOut">
+    <wsdl:part name="Body" element="tns:FlightDataAndImage" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataAndImageExHttpGetIn">
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="ACID" type="s:string" />
+    <wsdl:part name="Alias" type="s:string" />
+    <wsdl:part name="ScratchPad" type="s:string" />
+    <wsdl:part name="ImageFlags" type="s:string" />
+    <wsdl:part name="ImageWidth" type="s:string" />
+    <wsdl:part name="ImageHeight" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataAndImageExHttpGetOut">
+    <wsdl:part name="Body" element="tns:FlightDataAndImageEx" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightImageHttpGetIn">
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="ACID" type="s:string" />
+    <wsdl:part name="Alias" type="s:string" />
+    <wsdl:part name="ScratchPad" type="s:string" />
+    <wsdl:part name="ImageFlags" type="s:string" />
+    <wsdl:part name="ImageWidth" type="s:string" />
+    <wsdl:part name="ImageHeight" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightImageHttpGetOut">
+    <wsdl:part name="Body" element="tns:FlightImage" />
+  </wsdl:message>
+  <wsdl:message name="GetCodeShareFlightDataHttpGetIn">
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="ACID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCodeShareFlightDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:FlightData" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataHttpPostIn">
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="ACID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:FlightData" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataExHttpPostIn">
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="ACID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataExHttpPostOut">
+    <wsdl:part name="Body" element="tns:FlightDataEx" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataAndImageHttpPostIn">
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="ACID" type="s:string" />
+    <wsdl:part name="Alias" type="s:string" />
+    <wsdl:part name="ScratchPad" type="s:string" />
+    <wsdl:part name="ImageFlags" type="s:string" />
+    <wsdl:part name="ImageWidth" type="s:string" />
+    <wsdl:part name="ImageHeight" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataAndImageHttpPostOut">
+    <wsdl:part name="Body" element="tns:FlightDataAndImage" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataAndImageExHttpPostIn">
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="ACID" type="s:string" />
+    <wsdl:part name="Alias" type="s:string" />
+    <wsdl:part name="ScratchPad" type="s:string" />
+    <wsdl:part name="ImageFlags" type="s:string" />
+    <wsdl:part name="ImageWidth" type="s:string" />
+    <wsdl:part name="ImageHeight" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightDataAndImageExHttpPostOut">
+    <wsdl:part name="Body" element="tns:FlightDataAndImageEx" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightImageHttpPostIn">
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="ACID" type="s:string" />
+    <wsdl:part name="Alias" type="s:string" />
+    <wsdl:part name="ScratchPad" type="s:string" />
+    <wsdl:part name="ImageFlags" type="s:string" />
+    <wsdl:part name="ImageWidth" type="s:string" />
+    <wsdl:part name="ImageHeight" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlightImageHttpPostOut">
+    <wsdl:part name="Body" element="tns:FlightImage" />
+  </wsdl:message>
+  <wsdl:message name="GetCodeShareFlightDataHttpPostIn">
+    <wsdl:part name="Userid" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="ACID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCodeShareFlightDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:FlightData" />
+  </wsdl:message>
+  <wsdl:portType name="FlightExplorerFastTrackSoap">
+    <wsdl:operation name="GetFlightData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns basic flight information.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlightDataSoapIn" />
+      <wsdl:output message="tns:GetFlightDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataEx">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns extended flight information including additional details about the origin and destination airports and their current weather conditions.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlightDataExSoapIn" />
+      <wsdl:output message="tns:GetFlightDataExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataAndImage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns basic flight information and a URL for an image showing current flight location.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlightDataAndImageSoapIn" />
+      <wsdl:output message="tns:GetFlightDataAndImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataAndImageEx">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns extended flight information including additional details about the origin and destination airports and their current weather conditions and a URL for an image showing current flight location.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlightDataAndImageExSoapIn" />
+      <wsdl:output message="tns:GetFlightDataAndImageExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightImage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a URL for an image showing current flight location.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlightImageSoapIn" />
+      <wsdl:output message="tns:GetFlightImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCodeShareFlightData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns discovered code share flight information.</wsdl:documentation>
+      <wsdl:input message="tns:GetCodeShareFlightDataSoapIn" />
+      <wsdl:output message="tns:GetCodeShareFlightDataSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FlightExplorerFastTrackHttpGet">
+    <wsdl:operation name="GetFlightData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns basic flight information.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlightDataHttpGetIn" />
+      <wsdl:output message="tns:GetFlightDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataEx">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns extended flight information including additional details about the origin and destination airports and their current weather conditions.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlightDataExHttpGetIn" />
+      <wsdl:output message="tns:GetFlightDataExHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataAndImage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns basic flight information and a URL for an image showing current flight location.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlightDataAndImageHttpGetIn" />
+      <wsdl:output message="tns:GetFlightDataAndImageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataAndImageEx">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns extended flight information including additional details about the origin and destination airports and their current weather conditions and a URL for an image showing current flight location.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlightDataAndImageExHttpGetIn" />
+      <wsdl:output message="tns:GetFlightDataAndImageExHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightImage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a URL for an image showing current flight location.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlightImageHttpGetIn" />
+      <wsdl:output message="tns:GetFlightImageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCodeShareFlightData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns discovered code share flight information.</wsdl:documentation>
+      <wsdl:input message="tns:GetCodeShareFlightDataHttpGetIn" />
+      <wsdl:output message="tns:GetCodeShareFlightDataHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FlightExplorerFastTrackHttpPost">
+    <wsdl:operation name="GetFlightData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns basic flight information.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlightDataHttpPostIn" />
+      <wsdl:output message="tns:GetFlightDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataEx">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns extended flight information including additional details about the origin and destination airports and their current weather conditions.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlightDataExHttpPostIn" />
+      <wsdl:output message="tns:GetFlightDataExHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataAndImage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns basic flight information and a URL for an image showing current flight location.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlightDataAndImageHttpPostIn" />
+      <wsdl:output message="tns:GetFlightDataAndImageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataAndImageEx">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns extended flight information including additional details about the origin and destination airports and their current weather conditions and a URL for an image showing current flight location.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlightDataAndImageExHttpPostIn" />
+      <wsdl:output message="tns:GetFlightDataAndImageExHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightImage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a URL for an image showing current flight location.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlightImageHttpPostIn" />
+      <wsdl:output message="tns:GetFlightImageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCodeShareFlightData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns discovered code share flight information.</wsdl:documentation>
+      <wsdl:input message="tns:GetCodeShareFlightDataHttpPostIn" />
+      <wsdl:output message="tns:GetCodeShareFlightDataHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FlightExplorerFastTrackSoap" type="tns:FlightExplorerFastTrackSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFlightData">
+      <soap:operation soapAction="http://webservices.flightexplorer.com/GetFlightData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataEx">
+      <soap:operation soapAction="http://webservices.flightexplorer.com/GetFlightDataEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataAndImage">
+      <soap:operation soapAction="http://webservices.flightexplorer.com/GetFlightDataAndImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataAndImageEx">
+      <soap:operation soapAction="http://webservices.flightexplorer.com/GetFlightDataAndImageEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightImage">
+      <soap:operation soapAction="http://webservices.flightexplorer.com/GetFlightImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCodeShareFlightData">
+      <soap:operation soapAction="http://webservices.flightexplorer.com/GetCodeShareFlightData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FlightExplorerFastTrackSoap12" type="tns:FlightExplorerFastTrackSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFlightData">
+      <soap12:operation soapAction="http://webservices.flightexplorer.com/GetFlightData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataEx">
+      <soap12:operation soapAction="http://webservices.flightexplorer.com/GetFlightDataEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataAndImage">
+      <soap12:operation soapAction="http://webservices.flightexplorer.com/GetFlightDataAndImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataAndImageEx">
+      <soap12:operation soapAction="http://webservices.flightexplorer.com/GetFlightDataAndImageEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightImage">
+      <soap12:operation soapAction="http://webservices.flightexplorer.com/GetFlightImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCodeShareFlightData">
+      <soap12:operation soapAction="http://webservices.flightexplorer.com/GetCodeShareFlightData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FlightExplorerFastTrackHttpGet" type="tns:FlightExplorerFastTrackHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetFlightData">
+      <http:operation location="/GetFlightData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataEx">
+      <http:operation location="/GetFlightDataEx" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataAndImage">
+      <http:operation location="/GetFlightDataAndImage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataAndImageEx">
+      <http:operation location="/GetFlightDataAndImageEx" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightImage">
+      <http:operation location="/GetFlightImage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCodeShareFlightData">
+      <http:operation location="/GetCodeShareFlightData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FlightExplorerFastTrackHttpPost" type="tns:FlightExplorerFastTrackHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetFlightData">
+      <http:operation location="/GetFlightData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataEx">
+      <http:operation location="/GetFlightDataEx" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataAndImage">
+      <http:operation location="/GetFlightDataAndImage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightDataAndImageEx">
+      <http:operation location="/GetFlightDataAndImageEx" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlightImage">
+      <http:operation location="/GetFlightImage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCodeShareFlightData">
+      <http:operation location="/GetCodeShareFlightData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FlightExplorerFastTrack">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Flight Explorer FastTrack web services provide registered customers with flight information including real-time aircraft status, local airport weather conditions, and an image showing current flight location.</wsdl:documentation>
+    <wsdl:port name="FlightExplorerFastTrackSoap" binding="tns:FlightExplorerFastTrackSoap">
+      <soap:address location="http://webservices.flightexplorer.com/FastTrack.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FlightExplorerFastTrackSoap12" binding="tns:FlightExplorerFastTrackSoap12">
+      <soap12:address location="http://webservices.flightexplorer.com/FastTrack.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FlightExplorerFastTrackHttpGet" binding="tns:FlightExplorerFastTrackHttpGet">
+      <http:address location="http://webservices.flightexplorer.com/FastTrack.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FlightExplorerFastTrackHttpPost" binding="tns:FlightExplorerFastTrackHttpPost">
+      <http:address location="http://webservices.flightexplorer.com/FastTrack.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
