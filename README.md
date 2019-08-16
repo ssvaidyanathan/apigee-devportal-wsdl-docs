@@ -10,7 +10,7 @@ Sample to load WSDL docs to Apigee dev portal (Drupal)
 
 
 ## Steps:
-- Execute `mvn process-resources -Dportal.username="{portal.username}" -Dportal.password="{portal.password}" -Dportal.url="{portal.url}" -Dservice_name="{service_name}" -Dwsdl_file="{wsdl_file}`
+- Execute `mvn process-resources -Dportal.username="{portal.username}" -Dportal.password="{portal.password}" -Dportal.url="{portal.url}" -Dservice_name="{service_name}" -Dwsdl_file="{wsdl_file_full_path}`
 - Should be seeing the new doc in the portal if everything is good
 
 NOTE: The pom also makes a `cat` command call to print the output. If your OS does not support this, please change it or comment the plugin
