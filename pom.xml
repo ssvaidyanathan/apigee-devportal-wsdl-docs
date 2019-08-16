@@ -24,67 +24,64 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.root.dir>${basedir}</project.root.dir>
+		<target.root.dir>${basedir}/target</target.root.dir>
 	</properties>
-
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>com.github.cjnygard</groupId>
-				<artifactId>rest-maven-plugin</artifactId>
-				<version>0.1.4</version>
-				<executions>
-					<execution>
-						<id>upload-wsdl-doc</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>rest-request</goal>
-				        </goals>
-				        <configuration>
-				        	<method>POST</method>
-				        	<headers>
-								<Authorization>${portal.auth}</Authorization> <!-- Please pass the base64 encoded value of username:password and prefix it with "Basic", for example "Basic abcd" -->
-							</headers>
-				        	<endpoint>${portal.url}</endpoint> <!-- Dev portal URL with protocol-->
-				        	<resource>wsdl_docs_import</resource> <!-- DO NOT CHANGE THIS -->
-				        	<queryParams>
-	             				<name>${wsdl_name}</name> <!-- Doc name in portal -->
-	           				</queryParams>
-	           				<fileset>
-	           					<directory>${path_to_wsdl_directory}</directory> <!-- path to the wsdl directory -->
-	           					<includes>
-					            	<include>${wsdl_file_name}</include> <!-- File name with extension. For example "ec2.wsdl" -->
-					            </includes>
-	           				</fileset>
-	           				<requestType>
-								<type>application</type>
-								<subtype>octet-stream</subtype>
-							</requestType>
-	           				<outputDir>${basedir}/output</outputDir>   
-				        </configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.3.2</version>
-				<executions>
-					<execution>
-						<id>read-file</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>cat</executable>
-							<commandlineArgs>
-								${basedir}/output/${wsdl_file_name}
-							</commandlineArgs>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+	            <groupId>com.github.iarellano</groupId>
+	            <artifactId>iad-rest-client-maven-plugin</artifactId>
+	            <version>1.0.1</version>
+	            <executions>
+	                <execution>
+	                    <id>create-wsdl-service</id>
+	                    <phase>process-resources</phase>
+	                    <goals>
+	                        <goal>http-request</goal>
+	                    </goals>
+	                    <configuration>
+	                        <resourceUrl>${portal.url}/wsdl_docs/wsdl</resourceUrl>
+	                        <authorization>
+						        <username>${portal.username}</username>
+						        <password>${portal.password}</password>
+						    </authorization>
+	                        <method>POST</method>
+	                        <headers>
+	                            <Content-Type>application/json</Content-Type>
+	                        </headers>
+	                        <payload>{"name": "${service_name}"}</payload>
+	                        <responseOutput>${target.root.dir}/response.json</responseOutput>
+	                    </configuration>
+	                </execution>
+	                <execution>
+	                    <id>upload-wsdl-service</id>
+	                    <phase>process-resources</phase>
+	                    <goals>
+	                        <goal>http-request</goal>
+	                    </goals>
+	                    <configuration>
+	                        <resourceUrl>${portal.url}/wsdl_docs/wsdl/${service_name}/import</resourceUrl>
+	                        <authorization>
+						        <username>${portal.username}</username>
+						        <password>${portal.password}</password>
+						    </authorization>
+	                        <method>POST</method>
+	                        <headers>
+	                            <Content-Type>multipart/form-data</Content-Type>
+	                        </headers>
+	                        <multipart>
+	                        	<input>
+						            <name>soap_api_definition[]</name>
+						            <file>${wsdl_file}</file>
+						        </input>
+	                        </multipart>
+	                        <responseOutput>${target.root.dir}/uploadResponse.json</responseOutput>
+	                    </configuration>
+	                </execution>
+	            </executions>
+	        </plugin>
 		</plugins>
 	</build>
 
