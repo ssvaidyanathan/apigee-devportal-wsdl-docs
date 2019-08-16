@@ -4,7 +4,7 @@ Sample to load WSDL docs to Apigee dev portal (Drupal)
 ## Pre-req:
 - Apigee Edge account
 - Apigee Dev portal (Drupal)
-	- Installed [wsdl_docs](https://git.drupalcode.org/project/wsdl_docs) module
+	- Installed [wsdl_docs 7.x-2.x](https://git.drupalcode.org/project/wsdl_docs) module
 - Maven 3.x or later
 - Java 8 or later
 
